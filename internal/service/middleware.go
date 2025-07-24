@@ -12,6 +12,7 @@ import (
 type (
 	IMiddleware interface {
 		CORS(r *ghttp.Request)
+		Auth(r *ghttp.Request)
 	}
 )
 
