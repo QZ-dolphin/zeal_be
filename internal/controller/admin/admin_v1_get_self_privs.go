@@ -3,12 +3,16 @@ package admin
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
+	v1 "zeal_be/api/admin/v1"
+	"zeal_be/internal/service"
 
-	"zeal_be/api/admin/v1"
+	"github.com/gogf/gf/v2/frame/g"
 )
 
 func (c *ControllerV1) GetSelfPrivs(ctx context.Context, req *v1.GetSelfPrivsReq) (res *v1.GetSelfPrivsRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	r := g.RequestFromCtx(ctx)
+	email := r.GetCtxVar("Email").String()
+	res = &v1.GetSelfPrivsRes{}
+	res.Privs = service.Admin().GetUserPrivs(ctx, email)
+	return
 }

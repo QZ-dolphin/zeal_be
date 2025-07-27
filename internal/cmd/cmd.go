@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"zeal_be/internal/controller/admin"
 	"zeal_be/internal/service"
 
 	"github.com/gogf/gf/v2/frame/g"
@@ -19,7 +20,9 @@ var (
 			s.Use(service.Middleware().CORS)
 			s.Group("/", func(group *ghttp.RouterGroup) {
 				group.Middleware(ghttp.MiddlewareHandlerResponse)
-				group.Bind()
+				group.Bind(
+					admin.NewV1(),
+				)
 			})
 			s.Run()
 			return nil
