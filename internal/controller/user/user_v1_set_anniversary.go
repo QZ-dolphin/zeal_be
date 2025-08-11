@@ -3,12 +3,11 @@ package user
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
-
-	"zeal_be/api/user/v1"
+	v1 "zeal_be/api/user/v1"
+	"zeal_be/internal/service"
 )
 
 func (c *ControllerV1) SetAnniversary(ctx context.Context, req *v1.SetAnniversaryReq) (res *v1.SetAnniversaryRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	service.User().SetAnniversary(ctx, req.Day_name, req.Day_value)
+	return
 }

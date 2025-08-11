@@ -3,12 +3,12 @@ package user
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
-
-	"zeal_be/api/user/v1"
+	v1 "zeal_be/api/user/v1"
+	"zeal_be/internal/service"
 )
 
 func (c *ControllerV1) UserUpdateStack(ctx context.Context, req *v1.UserUpdateStackReq) (res *v1.UserUpdateStackRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	res = &v1.UserUpdateStackRes{}
+	res.Stat, res.Update_at = service.User().UpdateStackText(ctx, req.Stack_text)
+	return
 }

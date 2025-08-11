@@ -3,12 +3,12 @@ package user
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
-
-	"zeal_be/api/user/v1"
+	v1 "zeal_be/api/user/v1"
+	"zeal_be/internal/service"
 )
 
 func (c *ControllerV1) UpateAvatar(ctx context.Context, req *v1.UpateAvatarReq) (res *v1.UpateAvatarRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	res = &v1.UpateAvatarRes{}
+	res.Avatar_url = service.User().UpateAvatar(ctx, req.File)
+	return
 }

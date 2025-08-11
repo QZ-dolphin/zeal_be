@@ -8,4 +8,5 @@ import (
 	_ "zeal_be/internal/logic/admin"
 	_ "zeal_be/internal/logic/middleware"
 	_ "zeal_be/internal/logic/system"
+	_ "zeal_be/internal/logic/user"
 )
