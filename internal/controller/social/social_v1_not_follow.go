@@ -3,12 +3,12 @@ package social
 import (
 	"context"
 
-	"github.com/gogf/gf/v2/errors/gcode"
-	"github.com/gogf/gf/v2/errors/gerror"
-
-	"zeal_be/api/social/v1"
+	v1 "zeal_be/api/social/v1"
+	"zeal_be/internal/service"
 )
 
 func (c *ControllerV1) NotFollow(ctx context.Context, req *v1.NotFollowReq) (res *v1.NotFollowRes, err error) {
-	return nil, gerror.NewCode(gcode.CodeNotImplemented)
+	res = &v1.NotFollowRes{}
+	res.Stat = service.Social().NotFollowing(ctx, req.User_id)
+	return
 }
